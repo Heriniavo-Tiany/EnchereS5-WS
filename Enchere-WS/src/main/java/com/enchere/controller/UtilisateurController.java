@@ -22,8 +22,22 @@ public class UtilisateurController {
             @RequestParam(value = "motDePasse") String motDePasse
     ) {
         String query = String.format(
-                "INSERT INTO utilisateur(idUtilisateur, nom, email, contact, motDePasse) VALUES ( CONCAT('USER', NEXTVAL('seq_utilisateur')),'%s','%s','%s', sha224('%s'), %s)",
+                "INSERT INTO utilisateur(idutilisateur, nom, email, contact, motdepasse) VALUES ( CONCAT('USER', NEXTVAL('seq_utilisateur')),'%s','%s','%s', sha224('%s'), %s)",
                 idUtilisateur, nom, email, contact, motDePasse);
+        jdbcTemplate.batchUpdate(query);
+    }
+
+    @PostMapping("/admins")
+    public void insertAdmin(
+            @RequestParam(value = "idAdmin") String idAdmin,
+            @RequestParam(value = "nom") String nom,
+            @RequestParam(value = "email") String email,
+            @RequestParam(value = "contact") String contact,
+            @RequestParam(value = "motDePasse") String motDePasse
+    ) {
+        String query = String.format(
+                "INSERT INTO utilisateur(idadmin, nom, email, contact, motdepasse) VALUES ( CONCAT('USER', NEXTVAL('seq_utilisateur')),'%s','%s','%s', sha224('%s'), %s)",
+                idAdmin, nom, email, contact, motDePasse);
         jdbcTemplate.batchUpdate(query);
     }
 }
