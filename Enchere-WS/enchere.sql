@@ -1,37 +1,63 @@
-CREATE  TABLE categoriesenchere ( 
-	idcategorie   VARCHAR(20) PRIMARY KEY,
-	nom  varchar(20)    
- );
+CREATE TABLE categoriesenchere
+(
+    idcategorie VARCHAR(20) PRIMARY KEY,
+    nom         varchar(20)
+);
 
-INSERT INTO categoriesenchere (IDCATEGORIE,NOM) VALUES ('1','Beaux arts');
-INSERT INTO categoriesenchere (IDCATEGORIE,NOM) VALUES ('2','immo');
-INSERT INTO categoriesenchere (IDCATEGORIE,NOM) VALUES ('3','voiture');
+INSERT INTO categoriesenchere (IDCATEGORIE, NOM)
+VALUES ('1', 'Beaux arts');
+INSERT INTO categoriesenchere (IDCATEGORIE, NOM)
+VALUES ('2', 'immo');
+INSERT INTO categoriesenchere (IDCATEGORIE, NOM)
+VALUES ('3', 'voiture');
 
 
-CREATE  TABLE utilisateur ( 
-	idutilisateur  VARCHAR(20) PRIMARY KEY ,
-	nom                  varchar(20)    ,
-	email                varchar(50)    ,
-	contact              varchar(10)    ,
-	motdepasse           varchar   ,
-	compte               float(10) default 0
- );
+CREATE TABLE utilisateur
+(
+    idutilisateur VARCHAR(20) PRIMARY KEY,
+    nom           varchar(20),
+    email         varchar(50),
+    contact       varchar(10),
+    motdepasse    varchar,
+    compte        float(10) default 0
+);
 
 CREATE SEQUENCE seq_utilisateur;
 
-INSERT INTO utilisateur (idutilisateur, nom,email,contact,motdepasse,compte) VALUES('1','rakoto','rakoto@gmail.com','0339934589','motdepasse',1);
-INSERT INTO utilisateur (idutilisateur, nom,email,contact,motdepasse,compte) VALUES('2','rabe','rabe@gmail.com','0323047659','motdepasse',2);
-INSERT INTO utilisateur (idutilisateur, nom,email,contact,motdepasse,compte) VALUES('3','rasoa','rasoa@gmail.com','0389038736','motdepasse',3);
-INSERT INTO utilisateur (idutilisateur, nom,email,contact,motdepasse,compte) VALUES('4','rajao','rajao@gmail.com','0340038367','motdepasse',4);
+CREATE TABLE admin
+(
+    idadmin VARCHAR(20) PRIMARY KEY,
+    nom           varchar(20),
+    email         varchar(50),
+    contact       varchar(10),
+    motdepasse    varchar
+);
 
-	CREATE  TABLE categoriesproduit ( 
-		idcategorie          VARCHAR(20) PRIMARY KEY ,
-		nom                  varchar(20) NOT NULL    
-	 );
+CREATE SEQUENCE seq_admin;
 
-INSERT INTO categoriesproduit(idcategorie,nom) VALUES('1','deco');
-INSERT INTO categoriesproduit(idcategorie,nom) VALUES('2','habitation');
-INSERT INTO categoriesproduit(idcategorie,nom) VALUES('3','vehicule');
+
+
+INSERT INTO utilisateur (idutilisateur, nom, email, contact, motdepasse, compte)
+VALUES ('1', 'rakoto', 'rakoto@gmail.com', '0339934589', 'motdepasse', 1);
+INSERT INTO utilisateur (idutilisateur, nom, email, contact, motdepasse, compte)
+VALUES ('2', 'rabe', 'rabe@gmail.com', '0323047659', 'motdepasse', 2);
+INSERT INTO utilisateur (idutilisateur, nom, email, contact, motdepasse, compte)
+VALUES ('3', 'rasoa', 'rasoa@gmail.com', '0389038736', 'motdepasse', 3);
+INSERT INTO utilisateur (idutilisateur, nom, email, contact, motdepasse, compte)
+VALUES ('4', 'rajao', 'rajao@gmail.com', '0340038367', 'motdepasse', 4);
+
+CREATE TABLE categoriesproduit
+(
+    idcategorie VARCHAR(20) PRIMARY KEY,
+    nom         varchar(20) NOT NULL
+);
+
+INSERT INTO categoriesproduit(idcategorie, nom)
+VALUES ('1', 'deco');
+INSERT INTO categoriesproduit(idcategorie, nom)
+VALUES ('2', 'habitation');
+INSERT INTO categoriesproduit(idcategorie, nom)
+VALUES ('3', 'vehicule');
 
 -- CREATE  TABLE produits ( 
 -- 	idproduit   VARCHAR(20) PRIMARY KEY ,
@@ -61,7 +87,6 @@ INSERT INTO categoriesproduit(idcategorie,nom) VALUES('3','vehicule');
 -- INSERT INTO image(idimage,idproduit,image) VALUES ('4',4,'image');
 -- INSERT INTO image(idimage,idproduit,image) VALUES ('5',5,'image');
 -- INSERT INTO image(idimage,idproduit,image) VALUES ('6',6,'image');
-
 
 
 -----miandry produit izay tokony any anaty mongoDB
