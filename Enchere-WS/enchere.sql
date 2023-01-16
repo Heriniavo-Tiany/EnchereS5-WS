@@ -32,6 +32,8 @@ CREATE TABLE admin
     contact    varchar(10),
     motdepasse varchar
 );
+insert into admin VALUES
+('1','koto','koto@gmail.com','0331216444','koto');
 
 CREATE SEQUENCE seq_admin;
 
@@ -70,6 +72,19 @@ CREATE TABLE rechargement
     FOREIGN KEY (idUtilisateur) REFERENCES utilisateur (idutilisateur),
     FOREIGN KEY (idAdmin) REFERENCES admin (idadmin)
 );
+insert into rechargement (idRechargement,idUtilisateur,dateDemande ,compte) VALUES
+('rech05','1','2023-01-02','200000'),
+('rech06','2','2023-01-02','60000000'),
+('rech07','3','2023-01-02','2500000'),
+('rech08','4','2023-01-02','210000');
+
+insert into rechargement values
+-- (idrechargement,idUtilisateur,idAdmin,dateDemande,dateValidation,compte),
+('rech01','1','1','2023-01-01','2023-01-04','100000'),
+('rech02','1','1','2023-01-01','2023-01-04','200000'),
+('rech03','3','1','2023-01-01','2023-01-04','500000'),
+('rech04','4','1','2023-01-01','2023-01-04','1000000');
+
 
 CREATE VIEW v_demandeRechargement AS
 (
@@ -112,33 +127,36 @@ WHERE idAdmin is NULL
 
 
 -----miandry produit izay tokony any anaty mongoDB
--- CREATE  TABLE enchere ( 
--- 	idenchere              VARCHAR(20) PRIMARY KEY ,
--- 	idcategoriesenchere    integer    ,
--- 	idutilisateur          integer    ,
--- 	idproduit              integer    ,
--- 	dateheure            timestamp    ,
--- 	prix_minimal         float(10)   ,
--- 	duree                integer,
--- 	statut               varchar(50),
--- 	CONSTRAINT fk_enchere_categorie FOREIGN KEY(idcategoriesenchere) REFERENCES categoriesenchere(idcategorie),
--- 		CONSTRAINT fk_enchere_utilisateur FOREIGN KEY(idutilisateur) REFERENCES utilisateur(idutilisateur),
--- 			CONSTRAINT fk_enchere_produits FOREIGN KEY(idproduit) REFERENCES produits(idproduit)
+CREATE  TABLE enchere ( 
+	idenchere              VARCHAR(20) PRIMARY KEY ,
+	idcategoriesenchere    VARCHAR(20)    ,
+	idutilisateur          VARCHAR(20)    ,
+	idproduit              VARCHAR(20)    ,
+	dateheure            timestamp    ,
+	prix_minimal         float(10)   ,
+	duree                integer,
+	statut               int, --0 nouveaux , 5 en cours , 10 fini
+	CONSTRAINT fk_enchere_categorie FOREIGN KEY(idcategoriesenchere) REFERENCES categoriesenchere(idcategorie),
+		CONSTRAINT fk_enchere_utilisateur FOREIGN KEY(idutilisateur) REFERENCES utilisateur(idutilisateur)
+ );
 
---  );
+INSERT INTO enchere(idenchere, idcategoriesenchere,idutilisateur,idproduit,dateheure,prix_minimal,duree,statut) VALUES('1','2','1','63c40af0b27b0c6b8128b42b',now(),100,2,0);
+INSERT INTO enchere(idenchere, idcategoriesenchere,idutilisateur,idproduit,dateheure,prix_minimal,duree,statut) VALUES('1','3','4','63c40af0b27b0c6b8128b42c',now(),2000,1,5);
+INSERT INTO enchere(idenchere, idcategoriesenchere,idutilisateur,idproduit,dateheure,prix_minimal,duree,statut) VALUES('1','1','2','63c40af0b27b0c6b8128b42d',now(),500,3,10);
 
--- INSERT INTO enchere(idenchere, idcategoriesenchere,idutilisateur,idproduit,dateheure,prix_minimal,duree,statut) VALUES(1,2,1,2,now(),100,2,'publique');
--- INSERT INTO enchere(idenchere, idcategoriesenchere,idutilisateur,idproduit,dateheure,prix_minimal,duree,statut) VALUES(1,3,4,3,now(),2000,1,'privee');
--- INSERT INTO enchere(idenchere, idcategoriesenchere,idutilisateur,idproduit,dateheure,prix_minimal,duree,statut) VALUES(1,1,2,1,now(),500,3,'publique');
+CREATE  TABLE rencherir ( 
+	idrencherir            VARCHAR(20) PRIMARY KEY ,
+	idenchere              VARCHAR(20)    ,
+	idutilisateur          VARCHAR(20)    ,
+	prix_mise_enchere   float(10),
+	date_heure           timestamp ,
+	Foreign Key (idenchere) REFERENCES Enchere(idenchere),
+	foreign Key (idutilisateur) REFERENCES Utilisateur(idutilisateur)
+ );
 
--- CREATE  TABLE rencherir ( 
--- 	idrencherir            VARCHAR(20) PRIMARY KEY ,
--- 	idenchere              integer    ,
--- 	idutilisateur          integer    ,
--- 	prix_mise_enchere   float(10),
--- 	date_heure           timestamp ,
--- 	Foreign Key (idenchere) REFERENCES Enchere(idenchere),
--- 	foreign Key (idutilisateur) REFERENCES Utilisateur(idutilisateur)
---  );
-
--- INSERT INTO rencherir(idrencherir,idenchere,idutilisateur,prix_mise_enchere,date_heure) VALUES(1,1,1,'2000','2023-01-16 20:02:00');
+INSERT INTO rencherir(idrencherir,idenchere,idutilisateur,prix_mise_enchere,date_heure) VALUES
+('1','1','1','2000','2023-01-16 20:02:00'),
+('2','1','2','3000','2023-01-16 20:02:30'),
+('3','1','1','4000','2023-01-16 20:03:00'),
+('4','1','2','4001','2023-01-16 20:03:50'),
+('5','1','1','5000','2023-01-16 20:04:30');
