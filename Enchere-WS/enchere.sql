@@ -59,6 +59,29 @@ VALUES ('2', 'habitation');
 INSERT INTO categoriesproduit(idcategorie, nom)
 VALUES ('3', 'vehicule');
 
+CREATE TABLE rechargement (
+      idRechargement varchar(10) PRIMARY KEY ,
+      idUtilisateur varchar(10) NOT NULL,
+      idAdmin varchar(10),
+      dateDemande timestamp,
+      dateValidation timestamp,
+      FOREIGN KEY (idUtilisateur) REFERENCES utilisateur(idutilisateur),
+      FOREIGN KEY (idAdmin) REFERENCES admin(idadmin)
+);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 -- CREATE  TABLE produits ( 
 -- 	idproduit   VARCHAR(20) PRIMARY KEY ,
 -- 	nom                  varchar(20) NOT NULL,
