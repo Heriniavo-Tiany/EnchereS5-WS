@@ -6,7 +6,7 @@
   "nom": "tableau picasso",
   "description": "autoprotrait a la meche",
   "categorie": "decoration",
-  "image": "img1.jpg"
+  "image": ["img10.jpg","img11.jpg"]
 },{
   "_id": {
     "$oid": "63c40af0b27b0c6b8128b42c"
@@ -15,7 +15,7 @@
   "nom": "villa Ankanisoa",
   "description": "surface de 3000m2",
   "categorie": "Habitat",
-  "image": "img2.jpg"
+  "image": ["img21.jpg","img22.jpg"]
 },{
   "_id": {
     "$oid": "63c40af0b27b0c6b8128b42d"
@@ -24,7 +24,7 @@
   "nom": "mustang GT",
   "description": "ford mustang GT cabriolet 1968",
   "categorie": "vehicule",
-  "image": "img3.jpg"
+  "image": ["img31.jpg","img32.jpg"]
 },{
   "_id": {
     "$oid": "63c40af0b27b0c6b8128b42e"
@@ -33,5 +33,5 @@
   "nom": "sculpture",
   "description": "Etienne-Maurice Falconet:amoursse disputant un c�ur",
   "categorie": "decoration",
-  "image": "img4.jpg"
+  "image": ["img40.jpg","img41.jpg"]
 }]
