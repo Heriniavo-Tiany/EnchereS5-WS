@@ -26,11 +26,11 @@ CREATE SEQUENCE seq_utilisateur;
 
 CREATE TABLE admin
 (
-    idadmin VARCHAR(20) PRIMARY KEY,
-    nom           varchar(20),
-    email         varchar(50),
-    contact       varchar(10),
-    motdepasse    varchar
+    idadmin    VARCHAR(20) PRIMARY KEY,
+    nom        varchar(20),
+    email      varchar(50),
+    contact    varchar(10),
+    motdepasse varchar
 );
 
 CREATE SEQUENCE seq_admin;
@@ -59,30 +59,29 @@ VALUES ('2', 'habitation');
 INSERT INTO categoriesproduit(idcategorie, nom)
 VALUES ('3', 'vehicule');
 
-CREATE TABLE rechargement (
-      idRechargement varchar(10) PRIMARY KEY ,
-      idUtilisateur varchar(10) NOT NULL,
-      idAdmin varchar(10),
-      dateDemande timestamp,
-      dateValidation timestamp,
-      FOREIGN KEY (idUtilisateur) REFERENCES utilisateur(idutilisateur),
-      FOREIGN KEY (idAdmin) REFERENCES admin(idadmin)
+CREATE TABLE rechargement
+(
+    idRechargement varchar(10) PRIMARY KEY,
+    idUtilisateur  varchar(10) NOT NULL,
+    idAdmin        varchar(10),
+    dateDemande    timestamp,
+    dateValidation timestamp,
+    compte float(10),
+    FOREIGN KEY (idUtilisateur) REFERENCES utilisateur (idutilisateur),
+    FOREIGN KEY (idAdmin) REFERENCES admin (idadmin)
 );
 
+CREATE VIEW v_demandeRechargement AS
+(
+select idRechargement, idUtilisateur, dateDemande, compte
+FROM rechargement
+WHERE idAdmin is NULL
+  AND dateValidation is NULL
+    );
 
 
 
-
-
-
-
-
-
-
-
-
-
--- CREATE  TABLE produits ( 
+-- CREATE  TABLE produits (
 -- 	idproduit   VARCHAR(20) PRIMARY KEY ,
 -- 	nom                  varchar(20) NOT NULL,
 -- 	description          varchar(255) NOT NULL,
