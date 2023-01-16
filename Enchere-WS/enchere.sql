@@ -13,10 +13,11 @@ CREATE  TABLE utilisateur (
 	nom                  varchar(20)    ,
 	email                varchar(50)    ,
 	contact              varchar(10)    ,
-	motdepasse           varchar(50)    ,
-	compte               float(10)    
+	motdepasse           varchar   ,
+	compte               float(10) default 0
  );
 
+CREATE SEQUENCE seq_utilisateur;
 
 INSERT INTO utilisateur (idutilisateur, nom,email,contact,motdepasse,compte) VALUES('1','rakoto','rakoto@gmail.com','0339934589','motdepasse',1);
 INSERT INTO utilisateur (idutilisateur, nom,email,contact,motdepasse,compte) VALUES('2','rabe','rabe@gmail.com','0323047659','motdepasse',2);
