@@ -24,6 +24,7 @@ public class UtilisateurController {
         String query = String.format(
                 "INSERT INTO utilisateur(idutilisateur, nom, email, contact, motdepasse) VALUES ( CONCAT('USER', NEXTVAL('seq_utilisateur')),'%s','%s','%s', sha224('%s'), %s)",
                 idUtilisateur, nom, email, contact, motDePasse);
+        System.out.println(query);
         jdbcTemplate.batchUpdate(query);
     }
 
