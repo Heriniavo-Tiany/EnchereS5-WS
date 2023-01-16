@@ -1,5 +1,6 @@
 package com.enchere.controller;
 
+import com.enchere.model.Rechargement;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.web.bind.annotation.*;
@@ -41,4 +42,16 @@ public class UtilisateurController {
         jdbcTemplate.batchUpdate(query);
         return "Admin " + nom + " inséré";
     }
+
+    @GetMapping("/demandeRechargements")
+    @CrossOrigin
+    public Object getDemandes() {
+        String query = String.format("SELECT * FROM v_demanderechargement ");
+
+        return jdbcTemplate.query(
+                query,
+                (rs, rowNum) -> new Rechargement(rs.getString("idrechargement"), rs.getString("idutilisateur"), rs.getTimestamp("datedemande"), rs.getDouble("compte")));
+    }
+
+
 }
