@@ -144,12 +144,15 @@ CREATE TABLE enchere
     CONSTRAINT fk_enchere_gagnant FOREIGN KEY (idGagnant) REFERENCES utilisateur (idutilisateur)
 );
 
-INSERT INTO enchere(idenchere, idcategoriesenchere, idutilisateur, idproduit, dateheure, prix_minimal, duree, prixFinal, idGagnant)
-VALUES ('1', '2', '1', '63c40af0b27b0c6b8128b42b', now(), 100, date_part('minute', time '10:15:30') , 3000, 1);
-INSERT INTO enchere(idenchere, idcategoriesenchere, idutilisateur, idproduit, dateheure, prix_minimal, duree, prixFinal, idGagnant)
-VALUES ('2', '3', '4', '63c40af0b27b0c6b8128b42c', now(), 2000, date_part('minute', time '22:49:20'), 2000, 3);
-INSERT INTO enchere(idenchere, idcategoriesenchere, idutilisateur, idproduit, dateheure, prix_minimal, duree, prixFinal, idGagnant)
-VALUES ('3', '1', '2', '63c40af0b27b0c6b8128b42d', now(), 500, date_part('minute', time '12:53:20'), 10000, 3);
+INSERT INTO enchere(idenchere, idcategoriesenchere, idutilisateur, idproduit, dateheure, prix_minimal, duree, prixFinal,
+                    idGagnant)
+VALUES ('1', '2', '1', '63c40af0b27b0c6b8128b42b', '2023/5/12 00:00:00', 100, 1324, 3000, 1);
+INSERT INTO enchere(idenchere, idcategoriesenchere, idutilisateur, idproduit, dateheure, prix_minimal, duree, prixFinal,
+                    idGagnant)
+VALUES ('2', '3', '4', '63c40af0b27b0c6b8128b42c', now(), 2000, 324, 2000, 3);
+INSERT INTO enchere(idenchere, idcategoriesenchere, idutilisateur, idproduit, dateheure, prix_minimal, duree, prixFinal,
+                    idGagnant)
+VALUES ('3', '1', '2', '63c40af0b27b0c6b8128b42d', now(), 500, 1224, 10000, 3);
 
 CREATE TABLE rencherir
 (
@@ -177,3 +180,22 @@ FROM enchere e
          JOIN categoriesenchere c ON e.idcategoriesenchere = c.idcategorie
 GROUP BY e.idcategoriesenchere, c.nom
     );
+
+
+CREATE VIEW v_enchereTermine AS
+SELECT *, dateheure + (duree * INTERVAL '1 minute') as dateheurefin
+FROM enchere
+WHERE prixFinal IS NOT NULL
+  AND idGagnant IS NOT NULL;
+
+CREATE VIEW v_statSumPerMonth as (
+WITH months AS (
+    SELECT generate_series(1, 12) as mois
+)
+SELECT months.mois, COALESCE(sum(prixFinal), 0) as sum
+FROM months
+         LEFT JOIN v_enchereTermine
+                   ON months.mois = EXTRACT(MONTH FROM v_enchereTermine.dateheurefin)
+GROUP BY months.mois
+ORDER BY months.mois
+);
