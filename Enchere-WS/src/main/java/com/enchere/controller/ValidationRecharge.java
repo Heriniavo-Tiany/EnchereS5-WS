@@ -16,12 +16,10 @@ public class ValidationRecharge {
     @CrossOrigin
     public Object updateRechargement(
             @RequestParam(value = "idRechargement") String idRechargement,
-            @RequestParam(value = "admin") String admin,
-            @RequestParam(value = "datevalidation") String datevalidation
-    ) {
+            @RequestParam(value = "admin") String admin) {
         String query = String.format(
-                "UPDATE rechargement SET admin='%s', dateValidation='%s' where idRechargement='%s'",
-                admin, datevalidation, idRechargement);
+                "UPDATE rechargement SET admin='%s', dateValidation=now() where idRechargement='%s'",
+                admin, idRechargement);
         jdbcTemplate.batchUpdate(query);
         return "validation de rechargement inséré effectue";
     }
