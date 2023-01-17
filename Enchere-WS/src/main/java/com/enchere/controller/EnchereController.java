@@ -22,5 +22,13 @@ public class EnchereController {
                 (rs, rowNum) -> new Statistique(rs.getString("idcategoriesenchere"), rs.getString("nom"), rs.getInt("count")));
     }
 
+    @GetMapping("/stats/mois")
+    @CrossOrigin
+    public Object getStatMois() {
+        String query = String.format("SELECT * FROM v_statSumPerMonth ");
 
+        return jdbcTemplate.query(
+                query,
+                (rs, rowNum) -> new Statistique(rs.getDouble("sum")));
+    }
 }

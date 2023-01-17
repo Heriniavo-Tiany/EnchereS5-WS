@@ -5,7 +5,13 @@ public class Statistique {
     String nom;
     int nb;
 
+    double somme;
+
     public Statistique() {
+    }
+
+    public Statistique(double somme) {
+        this.somme = somme;
     }
 
     public Statistique(String idCategorie, String nom, int nb) {
@@ -16,6 +22,14 @@ public class Statistique {
 
     public String getIdCategorie() {
         return idCategorie;
+    }
+
+    public double getSomme() {
+        return somme;
+    }
+
+    public void setSomme(double somme) {
+        this.somme = somme;
     }
 
     public void setIdCategorie(String idCategorie) {
