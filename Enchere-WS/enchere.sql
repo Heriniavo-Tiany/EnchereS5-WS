@@ -136,18 +136,20 @@ CREATE TABLE enchere
     idproduit           VARCHAR,
     dateheure           timestamp,
     prix_minimal        float(10),
-    duree               integer,
-    statut              int, --0 nouveaux , 5 en cours , 10 fini
+    duree               int,
+    prixFinal           double precision,
+    idGagnant           VARCHAR(20),
     CONSTRAINT fk_enchere_categorie FOREIGN KEY (idcategoriesenchere) REFERENCES categoriesenchere (idcategorie),
-    CONSTRAINT fk_enchere_utilisateur FOREIGN KEY (idutilisateur) REFERENCES utilisateur (idutilisateur)
+    CONSTRAINT fk_enchere_utilisateur FOREIGN KEY (idutilisateur) REFERENCES utilisateur (idutilisateur),
+    CONSTRAINT fk_enchere_gagnant FOREIGN KEY (idGagnant) REFERENCES utilisateur (idutilisateur)
 );
 
-INSERT INTO enchere(idenchere, idcategoriesenchere, idutilisateur, idproduit, dateheure, prix_minimal, duree, statut)
-VALUES ('1', '2', '1', '63c40af0b27b0c6b8128b42b', now(), 100, 2, 0);
-INSERT INTO enchere(idenchere, idcategoriesenchere, idutilisateur, idproduit, dateheure, prix_minimal, duree, statut)
-VALUES ('2', '3', '4', '63c40af0b27b0c6b8128b42c', now(), 2000, 1, 5);
-INSERT INTO enchere(idenchere, idcategoriesenchere, idutilisateur, idproduit, dateheure, prix_minimal, duree, statut)
-VALUES ('3', '1', '2', '63c40af0b27b0c6b8128b42d', now(), 500, 3, 10);
+INSERT INTO enchere(idenchere, idcategoriesenchere, idutilisateur, idproduit, dateheure, prix_minimal, duree, prixFinal, idGagnant)
+VALUES ('1', '2', '1', '63c40af0b27b0c6b8128b42b', now(), 100, date_part('minute', time '10:15:30') , 3000, 1);
+INSERT INTO enchere(idenchere, idcategoriesenchere, idutilisateur, idproduit, dateheure, prix_minimal, duree, prixFinal, idGagnant)
+VALUES ('2', '3', '4', '63c40af0b27b0c6b8128b42c', now(), 2000, date_part('minute', time '22:49:20'), 2000, 3);
+INSERT INTO enchere(idenchere, idcategoriesenchere, idutilisateur, idproduit, dateheure, prix_minimal, duree, prixFinal, idGagnant)
+VALUES ('3', '1', '2', '63c40af0b27b0c6b8128b42d', now(), 500, date_part('minute', time '12:53:20'), 10000, 3);
 
 CREATE TABLE rencherir
 (
@@ -173,5 +175,5 @@ CREATE VIEW v_statcat AS
 SELECT e.idcategoriesenchere, c.nom, count(e.idcategoriesenchere)
 FROM enchere e
          JOIN categoriesenchere c ON e.idcategoriesenchere = c.idcategorie
-         GROUP BY e.idcategoriesenchere, c.nom
+GROUP BY e.idcategoriesenchere, c.nom
     );
