@@ -14,15 +14,16 @@ public class ValidationRecharge {
     @RequestMapping(value = "/rechargements", method = RequestMethod.POST, produces = "application/json")
     @ResponseBody
     @CrossOrigin
-    public Object insertUser(
+    public Object updateRechargement(
+            @RequestParam(value = "idRechargement") String idRechargement,
             @RequestParam(value = "admin") String admin,
             @RequestParam(value = "datevalidation") String datevalidation
     ) {
         String query = String.format(
-                "INSERT INTO utilisateur(idutilisateur, nom, email, contact, motdepasse) VALUES ( CONCAT('USER', NEXTVAL('seq_utilisateur')),'%s','%s', '%s', sha224('%s'))",
-                nom, email, contact, motDePasse);
+                "UPDATE rechargement SET admin='%s', dateValidation='%s' where idRechargement='%s'",
+                admin, datevalidation, idRechargement);
         jdbcTemplate.batchUpdate(query);
-        return "Utilisateur " + nom + " inséré";
+        return "validation de rechargement inséré effectue";
     }
 
 }
