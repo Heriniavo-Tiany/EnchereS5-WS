@@ -1,6 +1,5 @@
 package com.enchere.controller;
 
-// import com.enchere.model.Rechargement;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.web.bind.annotation.*;
