@@ -212,3 +212,4 @@ CASE WHEN prixFinal is null THEN 0
     else 1
     end as status
  FROM enchere ;
+ CREATE SEQUENCE seq_rechargement;

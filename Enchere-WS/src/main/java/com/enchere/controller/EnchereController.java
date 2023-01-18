@@ -1,6 +1,6 @@
 package com.enchere.controller;
 
-import com.enchere.model.Rechargement;
+// import com.enchere.model.Rechargement;
 import com.enchere.model.Statistique;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
