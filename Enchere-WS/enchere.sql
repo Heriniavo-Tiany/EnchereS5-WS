@@ -188,14 +188,26 @@ FROM enchere
 WHERE prixFinal IS NOT NULL
   AND idGagnant IS NOT NULL;
 
-CREATE VIEW v_statSumPerMonth as (
-WITH months AS (
-    SELECT generate_series(1, 12) as mois
-)
+CREATE VIEW v_enchere AS
+SELECT *,
+       dateheure + (duree * INTERVAL '1 minute') as dateheurefin,
+       CASE
+           WHEN prixFinal IS NOT NULL AND idGagnant IS NOT NULL THEN 1
+           WHEN now() < enchere.dateheure THEN -1
+           ELSE 0
+           END                                   as status
+FROM enchere;
+select now();
+
+
+
+CREATE VIEW v_statSumPerMonth as
+(
+WITH months AS (SELECT generate_series(1, 12) as mois)
 SELECT months.mois, COALESCE(sum(prixFinal), 0) as sum
 FROM months
          LEFT JOIN v_enchereTermine
                    ON months.mois = EXTRACT(MONTH FROM v_enchereTermine.dateheurefin)
 GROUP BY months.mois
 ORDER BY months.mois
-);
+    );
