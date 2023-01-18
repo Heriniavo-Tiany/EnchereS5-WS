@@ -37,7 +37,7 @@ public class UtilisateurController {
             @RequestParam(value = "motDePasse") String motDePasse
     ) {
         String query = String.format(
-                "INSERT INTO admin(idadmin, nom, email, contact, motdepasse) VALUES ( CONCAT('ADMIN', NEXTVAL('seq_admin')),'%s','%s', '%s', sha224('%s'))",
+                "INSERT INTO admin(idadmin, nom, email, contact, motdepasse) VALUES ( CONCAT('ADMIN', NEXTVAL('seq_admin')),'%s','%s', '%s',md5('%s'))",
                 nom, email, contact, motDePasse);
         jdbcTemplate.batchUpdate(query);
         return "Admin " + nom + " inséré";
