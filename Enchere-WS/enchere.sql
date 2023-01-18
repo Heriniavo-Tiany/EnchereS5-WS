@@ -154,6 +154,11 @@ INSERT INTO enchere(idenchere, idcategoriesenchere, idutilisateur, idproduit, da
                     idGagnant)
 VALUES ('3', '1', '2', '63c40af0b27b0c6b8128b42d', now(), 500, 1224, 10000, 3);
 
+insert into enchere (idenchere, idcategoriesenchere, idutilisateur, idproduit, dateheure, prix_minimal, duree)VALUES
+('4', '1','1', '63c40af0b27b0c6b8128b42b',  now(), 200000, 205),
+('5', '2','2', '63c40af0b27b0c6b8128b42d',  now(), 50000, 160),
+('6', '3','1', '63c40af0b27b0c6b8128b42e',  now(), 300000, 60);
+
 CREATE TABLE rencherir
 (
     idrencherir       VARCHAR(20) PRIMARY KEY,
@@ -199,3 +204,11 @@ FROM months
 GROUP BY months.mois
 ORDER BY months.mois
 );
+
+---anja
+CREATE or REPLACE view v_encherestatut AS
+SELECT idenchere,idcategoriesenchere,idutilisateur,idproduit,dateheure,prix_minimal,duree,COALESCE(prixFinal,'0') as prixfinal, COALESCE(idGagnant,'0') idgagnant,
+CASE WHEN prixFinal is null THEN 0
+    else 1
+    end as status
+ FROM enchere ;
