@@ -228,3 +228,5 @@ CASE WHEN prixFinal is null THEN 0
 create sequence s_categorie;
 
 create sequence seq_rencherir;
+
+create sequence s_enchere;

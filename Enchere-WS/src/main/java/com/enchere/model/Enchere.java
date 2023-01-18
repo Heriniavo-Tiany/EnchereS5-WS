@@ -1,6 +1,6 @@
 package com.enchere.model;
 
-import java.security.Timestamp;
+import java.sql.Timestamp;
 
 public class Enchere {
     String idenchere;
@@ -13,7 +13,7 @@ public class Enchere {
     double prixFinal;
     String idGagnant;
 
-    public Enchere(String idenchere,String idcategoriesenchere, String idutilisateur, String idproduit,
+    public Enchere(String idenchere, String idcategoriesenchere, String idutilisateur, String idproduit,
             Timestamp dateheure, double prix_minimal, int duree, double prixFinal, String idGagnant) {
         this.idenchere = idenchere;
         this.idcategoriesenchere = idcategoriesenchere;
