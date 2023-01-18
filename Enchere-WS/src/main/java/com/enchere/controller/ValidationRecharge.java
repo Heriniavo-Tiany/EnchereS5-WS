@@ -18,7 +18,7 @@ public class ValidationRecharge {
             @RequestParam(value = "idRechargement") String idRechargement,
             @RequestParam(value = "admin") String admin) {
         String query = String.format(
-                "UPDATE rechargement SET admin='%s', dateValidation=now() where idRechargement='%s'",
+                "UPDATE rechargement SET idadmin='%s', dateValidation=now() where idRechargement='%s'",
                 admin, idRechargement);
         jdbcTemplate.batchUpdate(query);
         return "validation de rechargement inséré effectue";
