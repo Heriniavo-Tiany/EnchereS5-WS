@@ -155,8 +155,6 @@ INSERT INTO enchere(idenchere, idcategoriesenchere, idutilisateur, idproduit, da
 VALUES ('3', '1', '2', '63c40af0b27b0c6b8128b42d', now(), 500, 1224, 10000, 3);
 
 insert into enchere (idenchere, idcategoriesenchere, idutilisateur, idproduit, dateheure, prix_minimal, duree)VALUES
-('4', '1','1', '63c40af0b27b0c6b8128b42b',  now(), 200000, 205),
-('5', '2','2', '63c40af0b27b0c6b8128b42d',  now(), 50000, 160),
 ('6', '3','1', '63c40af0b27b0c6b8128b42e',  now(), 300000, 60);
 
 CREATE TABLE rencherir

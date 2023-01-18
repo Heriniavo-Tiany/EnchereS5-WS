@@ -1,6 +1,7 @@
 package com.enchere.model;
 
 import java.sql.Timestamp;
+import java.util.Optional;
 
 public class Enchere {
     String idenchere;
@@ -12,6 +13,7 @@ public class Enchere {
     int duree;
     double prixFinal;
     String idGagnant;
+    Optional<Produit> produit;
 
     public Enchere(String idenchere, String idcategoriesenchere, String idutilisateur, String idproduit,
             Timestamp dateheure, double prix_minimal, int duree, double prixFinal, String idGagnant) {
@@ -35,6 +37,14 @@ public class Enchere {
         this.dateheure = dateheure;
         this.prix_minimal = prix_minimal;
         this.duree = duree;
+    }
+
+    public Optional<Produit> getProduit() {
+        return produit;
+    }
+
+    public void setProduit(Optional<Produit> produit) {
+        this.produit = produit;
     }
 
     public String getIdenchere() {

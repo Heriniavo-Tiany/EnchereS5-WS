@@ -1,7 +1,8 @@
 package com.enchere.controller;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.xml.ws.RequestWrapper;
+//import javax.xml.ws.RequestWrapper;
+import com.enchere.mongoDB.ProduitRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.web.bind.annotation.*;
@@ -11,7 +12,7 @@ import java.util.List;
 import java.sql.Timestamp;
 import com.enchere.model.*;
 
-import javafx.scene.chart.ValueAxis;
+//import javafx.scene.chart.ValueAxis;
 
 @RestController
 public class EnchereApplication {
@@ -19,9 +20,12 @@ public class EnchereApplication {
         @Autowired
         JdbcTemplate jdbc;
 
+        @Autowired
+        ProduitRepository produitRepository;
+
         @GetMapping("/Encheres")
         public List<Enchere> getAll() {
-                return jdbc.query(
+                List<Enchere> encheres = jdbc.query(
                                 "SELECT * FROM enchere",
                                 (rs, rowNum) -> new Enchere(rs.getString("idenchere"),
                                                 rs.getString("idcategoriesenchere"),
@@ -30,6 +34,14 @@ public class EnchereApplication {
                                                 rs.getDouble("prix_minimal"),
                                                 rs.getInt("duree"),
                                                 rs.getDouble("prixfinal"), rs.getString("idgagnant")));
+                ProduitController produitController = new ProduitController();
+                for (Enchere e :
+                        encheres) {
+                        System.out.println(e.getIdproduit());
+                        System.out.println(produitRepository.findById(e.getIdproduit()));
+                        e.setProduit(produitRepository.findById(e.getIdproduit()));
+                }
+                return encheres;
         }
 
         @GetMapping("/Enchere")
