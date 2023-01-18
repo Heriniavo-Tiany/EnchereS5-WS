@@ -21,6 +21,7 @@ public class CategorieApplcation {
     }
 
     @PostMapping("/NewCategorieEnchere")
+    @CrossOrigin
     public void insertCategorie(@RequestParam(value = "nom") String nom) {
         String query = String.format(
                 "INSERT INTO categoriesenchere VALUES ( concat('CAT', nextval('s_categorie')), '%s')",
