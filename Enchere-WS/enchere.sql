@@ -154,6 +154,11 @@ INSERT INTO enchere(idenchere, idcategoriesenchere, idutilisateur, idproduit, da
                     idGagnant)
 VALUES ('3', '1', '2', '63c40af0b27b0c6b8128b42d', now(), 500, 1224, 10000, 3);
 
+insert into enchere (idenchere, idcategoriesenchere, idutilisateur, idproduit, dateheure, prix_minimal, duree)VALUES
+('4', '1','1', '63c40af0b27b0c6b8128b42b',  now(), 200000, 205),
+('5', '2','2', '63c40af0b27b0c6b8128b42d',  now(), 50000, 160),
+('6', '3','1', '63c40af0b27b0c6b8128b42e',  now(), 300000, 60);
+
 CREATE TABLE rencherir
 (
     idrencherir       VARCHAR(20) PRIMARY KEY,
@@ -188,10 +193,22 @@ FROM enchere
 WHERE prixFinal IS NOT NULL
   AND idGagnant IS NOT NULL;
 
-CREATE VIEW v_statSumPerMonth as (
-WITH months AS (
-    SELECT generate_series(1, 12) as mois
-)
+CREATE VIEW v_enchere AS
+SELECT *,
+       dateheure + (duree * INTERVAL '1 minute') as dateheurefin,
+       CASE
+           WHEN prixFinal IS NOT NULL AND idGagnant IS NOT NULL THEN 1
+           WHEN now() < enchere.dateheure THEN -1
+           ELSE 0
+           END                                   as status
+FROM enchere;
+select now();
+
+
+
+CREATE VIEW v_statSumPerMonth as
+(
+WITH months AS (SELECT generate_series(1, 12) as mois)
 SELECT months.mois, COALESCE(sum(prixFinal), 0) as sum
 FROM months
          LEFT JOIN v_enchereTermine
@@ -199,8 +216,12 @@ FROM months
 GROUP BY months.mois
 ORDER BY months.mois
 );
+---anja
+CREATE or REPLACE view v_encherestatut AS
+SELECT idenchere,idcategoriesenchere,idutilisateur,idproduit,dateheure,prix_minimal,duree,COALESCE(prixFinal,'0') as prixfinal, COALESCE(idGagnant,'0') idgagnant,
+CASE WHEN prixFinal is null THEN 0
+    else 1
+    end as status
+ FROM enchere ;
+ CREATE SEQUENCE seq_rechargement;
 
-
-create sequence seq_categorieEnchere;
-
-create sequence seq_rencherir;
