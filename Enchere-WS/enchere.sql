@@ -1,7 +1,7 @@
 CREATE TABLE categoriesenchere
 (
     idcategorie VARCHAR(20) PRIMARY KEY,
-    nom         varchar(20)
+    nom         varchar(80)
 );
 
 INSERT INTO categoriesenchere (IDCATEGORIE, NOM)
@@ -160,7 +160,7 @@ CREATE TABLE rencherir
     idenchere         VARCHAR(20),
     idutilisateur     VARCHAR(20),
     prix_mise_enchere float(10),
-    date_heure        timestamp,
+    date_heure        timestamp default now(),
     Foreign Key (idenchere) REFERENCES Enchere (idenchere),
     foreign Key (idutilisateur) REFERENCES Utilisateur (idutilisateur)
 );
@@ -199,3 +199,8 @@ FROM months
 GROUP BY months.mois
 ORDER BY months.mois
 );
+
+
+create sequence seq_categorieEnchere;
+
+create sequence seq_rencherir;
