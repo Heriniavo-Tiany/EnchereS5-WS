@@ -24,6 +24,7 @@ public class EnchereApplication {
         ProduitRepository produitRepository;
 
         @GetMapping("/Encheres")
+        @CrossOrigin
         public List<Enchere> getAll() {
                 List<Enchere> encheres = jdbc.query(
                                 "SELECT * FROM enchere",
