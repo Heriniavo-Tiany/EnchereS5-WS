@@ -36,8 +36,7 @@ public class EnchereApplication {
                                                 rs.getInt("duree"),
                                                 rs.getDouble("prixfinal"), rs.getString("idgagnant")));
                 ProduitController produitController = new ProduitController();
-                for (Enchere e :
-                        encheres) {
+                for (Enchere e : encheres) {
                         System.out.println(e.getIdproduit());
                         System.out.println(produitRepository.findById(e.getIdproduit()));
                         e.setProduit(produitRepository.findById(e.getIdproduit()));
@@ -60,6 +59,12 @@ public class EnchereApplication {
                                                         rs.getDouble("prix_minimal"),
                                                         rs.getInt("duree"),
                                                         rs.getDouble("prixfinal"), rs.getString("idgagnant")));
+                        ProduitController produitController = new ProduitController();
+                        for (Enchere e : encheres) {
+                                System.out.println(e.getIdproduit());
+                                System.out.println(produitRepository.findById(e.getIdproduit()));
+                                e.setProduit(produitRepository.findById(e.getIdproduit()));
+                        }
                 } catch (Exception e) {
                         e.printStackTrace();
                 }
@@ -70,7 +75,8 @@ public class EnchereApplication {
         @GetMapping("/EnchereEnCours")
         public List<Enchere> getEnCours() {
                 String query = String.format("SELECT * FROM v_enchere WHERE status = '0' ");
-                return jdbc.query(
+                List<Enchere> encheres = new ArrayList<>();
+                encheres= jdbc.query(
                                 query,
                                 (rs, rowNum) -> new Enchere(rs.getString("idenchere"),
                                                 rs.getString("idcategoriesenchere"),
@@ -79,12 +85,21 @@ public class EnchereApplication {
                                                 rs.getDouble("prix_minimal"),
                                                 rs.getInt("duree"),
                                                 rs.getDouble("prixfinal"), rs.getString("idgagnant")));
+                                                ProduitController produitController = new ProduitController();
+                for (Enchere e :
+                        encheres) {
+                        System.out.println(e.getIdproduit());
+                        System.out.println(produitRepository.findById(e.getIdproduit()));
+                        e.setProduit(produitRepository.findById(e.getIdproduit()));
+                }
+                return encheres;
         }
 
         @GetMapping("/EnchereFini")
         public List<Enchere> getFini() {
+                List<Enchere> encheres = new ArrayList<>();
                 String query = String.format("SELECT * FROM v_enchere WHERE status = '1' ");
-                return jdbc.query(
+                encheres = jdbc.query(
                                 query,
                                 (rs, rowNum) -> new Enchere(rs.getString("idenchere"),
                                                 rs.getString("idcategoriesenchere"),
@@ -93,12 +108,20 @@ public class EnchereApplication {
                                                 rs.getDouble("prix_minimal"),
                                                 rs.getInt("duree"),
                                                 rs.getDouble("prixfinal"), rs.getString("idgagnant")));
+                                                for (Enchere e :
+                        encheres) {
+                        System.out.println(e.getIdproduit());
+                        System.out.println(produitRepository.findById(e.getIdproduit()));
+                        e.setProduit(produitRepository.findById(e.getIdproduit()));
+                }
+                return encheres;
         }
 
         @GetMapping("/PasCommence")
         public List<Enchere> PasCommence() {
                 String query = String.format("SELECT * FROM v_enchere WHERE status = '-1'");
-                return jdbc.query(
+                List<Enchere> encheres = new ArrayList<>();
+                encheres= jdbc.query(
                                 query,
                                 (rs, rowNum) -> new Enchere(rs.getString("idenchere"),
                                                 rs.getString("idcategoriesenchere"),
@@ -107,6 +130,13 @@ public class EnchereApplication {
                                                 rs.getDouble("prix_minimal"),
                                                 rs.getInt("duree"),
                                                 rs.getDouble("prixfinal"), rs.getString("idgagnant")));
+                                                for (Enchere e :
+                        encheres) {
+                        System.out.println(e.getIdproduit());
+                        System.out.println(produitRepository.findById(e.getIdproduit()));
+                        e.setProduit(produitRepository.findById(e.getIdproduit()));
+                }
+                return encheres;
         }
 
         @RequestMapping(value = "/UpdateEnchere", method = RequestMethod.POST, produces = "application/json")
@@ -128,9 +158,9 @@ public class EnchereApplication {
                                 idenchere);
                 if (prixfinal.isEmpty() || idgagnant.isEmpty()) {
                         query = String.format(
-                                "update enchere set idutilisateur ='%s', idcategoriesenchere='%s', idproduit='%s',dateheure='%s',prix_minimal='%s',duree='%s' where idenchere='%s'",
-                                iduser, idcategorie, idproduit, dateheure, prix_minimal, duree,
-                                idenchere);
+                                        "update enchere set idutilisateur ='%s', idcategoriesenchere='%s', idproduit='%s',dateheure='%s',prix_minimal='%s',duree='%s' where idenchere='%s'",
+                                        iduser, idcategorie, idproduit, dateheure, prix_minimal, duree,
+                                        idenchere);
                 }
                 System.out.println(query);
                 jdbc.batchUpdate(query);
@@ -144,9 +174,8 @@ public class EnchereApplication {
                 String idproduit = request.getParameter("idproduit");
                 String dateheure = request.getParameter("dateheure");
                 double prix_minimal = Double.valueOf(request.getParameter("prix_minimal"));
-                
+
                 int duree = Integer.parseInt(request.getParameter("duree"));
-                
 
                 String query = String.format(
                                 "insert into enchere values( concat('ECR', nextval('s_enchere')),'%s','%s','%s','%s','%s','%s')",
