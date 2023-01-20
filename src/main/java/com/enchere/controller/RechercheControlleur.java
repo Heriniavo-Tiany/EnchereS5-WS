@@ -55,6 +55,6 @@ public class RechercheControlleur {
                 }
             }
         }
-        return listeEnchere;
+        return requete;
     }
 }
