@@ -138,13 +138,13 @@ public class EnchereApplication {
                 String idproduit = request.getParameter("idproduit");
                 String dateheure = request.getParameter("dateheure");
                 double prix_minimal = Double.valueOf(request.getParameter("prix_minimal"));
-                String prixfinal = request.getParameter("prixfinal");
+                
                 int duree = Integer.parseInt(request.getParameter("duree"));
-                String idgagnant = request.getParameter("idgagnant");
+                
 
                 String query = String.format(
-                                "insert into enchere values( concat('ECR', nextval('s_enchere')),'%s','%s','%s','%s','%s','%s','%s','%s')",
-                                idcategorie, iduser, idproduit, dateheure, prix_minimal, duree, prixfinal, idgagnant);
+                                "insert into enchere values( concat('ECR', nextval('s_enchere')),'%s','%s','%s','%s','%s','%s')",
+                                idcategorie, iduser, idproduit, dateheure, prix_minimal, duree);
                 System.out.println(query);
                 jdbc.batchUpdate(query);
         }
