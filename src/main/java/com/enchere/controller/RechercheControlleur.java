@@ -12,7 +12,7 @@ public class RechercheControlleur {
     JdbcTemplate jdbcTemplate;
 
 
-    @RequestMapping(value = "/rechercheavance", method = RequestMethod.GET, produces = "application/json")
+    @RequestMapping(value = "/rechercheavances", method = RequestMethod.GET, produces = "application/json")
     @CrossOrigin
     public Object rechecheavance(
             @RequestParam(value = "motcle") String motcle,
