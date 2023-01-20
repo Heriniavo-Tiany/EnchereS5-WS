@@ -126,6 +126,12 @@ public class EnchereApplication {
                                 "update enchere set idutilisateur ='%s', idcategoriesenchere='%s', idproduit='%s',dateheure='%s',prix_minimal='%s',prixfinal='%s',duree='%s',idgagnant='%s' where idenchere='%s'",
                                 iduser, idcategorie, idproduit, dateheure, prix_minimal, prixfinal, duree, idgagnant,
                                 idenchere);
+                if (prixfinal.isEmpty() || idgagnant.isEmpty()) {
+                        query = String.format(
+                                "update enchere set idutilisateur ='%s', idcategoriesenchere='%s', idproduit='%s',dateheure='%s',prix_minimal='%s',duree='%s' where idenchere='%s'",
+                                iduser, idcategorie, idproduit, dateheure, prix_minimal, duree,
+                                idenchere);
+                }
                 System.out.println(query);
                 jdbc.batchUpdate(query);
         }
