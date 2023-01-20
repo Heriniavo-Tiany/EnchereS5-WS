@@ -18,7 +18,7 @@ public class RenchereApplication {
     @GetMapping("/Rencheres")
     public List<Renchere> getAll(@RequestParam(value = "idenchere") String idenchere) {
 
-        String query = String.format("SELECT * FROM rencherir WHERE idrencherir = '%s' ",
+        String query = String.format("SELECT * FROM rencherir WHERE idenchere = '%s' ",
                 idenchere);
         return jdbc.query(
                 query,
