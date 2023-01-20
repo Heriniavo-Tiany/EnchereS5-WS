@@ -20,11 +20,39 @@ public class RechercheControlleur {
             @RequestParam(value = "categorie") String categorie,
             @RequestParam(value = "status") String status,
             @RequestParam(value = "prixminimal") String prixminimal) {
-        String query = String.format("SELECT * FROM v_demanderechargement ");
+                String requete = "SELECT * FROM v_enchere where 1=1 and ";
+                if (!date.isEmpty()) {
+                    requete = requete+" dateheure = '" + date + "' and ";
+                }
+                if (!categorie.isEmpty()) {
+                    requete = requete+" idcategoriesenchere = '" + categorie +"' and ";
+                }
+                if (!status.isEmpty()) {
+                    requete = requete+" status = '" + status +"' and ";
+                }
+                if (!prixminimal.isEmpty()) {
+                    requete = requete+" prix_minimal = '" + prixminimal+ "' and ";
+                }
+                requete = requete+" 1=1";
 
-        return jdbcTemplate.query(
-                query,
-                (rs, rowNum) -> new Rechargement(rs.getString("idrechargement"), rs.getString("idutilisateur"),
-                        rs.getTimestamp("datedemande"), rs.getDouble("compte")));
+        List<Enchere> encheres = jdbcTemplate.query(
+                requete,
+                (rs, rowNum) -> new Enchere(rs.getString("idenchere"),
+                        rs.getString("idcategoriesenchere"),
+                        rs.getString("idutilisateur"),
+                        rs.getString("idproduit"), rs.getTimestamp("dateheure"),
+                        rs.getDouble("prix_minimal"),
+                        rs.getInt("duree"),
+                        rs.getDouble("prixfinal"), rs.getString("idgagnant")));
+        List<Enchere> listeEnchere = new ArrayList<Enchere>();
+        for (Enchere e : encheres) {
+            e.setProduit(produitRepository.findById(e.getIdproduit()));
+            if (e.getProduit().isPresent()) {
+                if ((e.getProduit().get().getNom().contains(motcle))) {
+                    listeEnchere.add(e);
+                }
+            }
+        }
+        return listeEnchere;
     }
 }
