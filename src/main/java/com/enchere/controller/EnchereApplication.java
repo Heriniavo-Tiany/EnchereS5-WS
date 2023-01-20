@@ -118,7 +118,7 @@ public class EnchereApplication {
                 String idproduit = request.getParameter("idproduit");
                 String dateheure = request.getParameter("dateheure");
                 double prix_minimal = Double.valueOf(request.getParameter("prix_minimal"));
-                double prixfinal = Double.valueOf(request.getParameter("prixfinal"));
+                String prixfinal = Double.valueOf(request.getParameter("prixfinal"));
                 int duree = Integer.parseInt(request.getParameter("duree"));
                 String idgagnant = request.getParameter("idgagnant");
 
@@ -138,7 +138,7 @@ public class EnchereApplication {
                 String idproduit = request.getParameter("idproduit");
                 String dateheure = request.getParameter("dateheure");
                 double prix_minimal = Double.valueOf(request.getParameter("prix_minimal"));
-                double prixfinal = Double.valueOf(request.getParameter("prixfinal"));
+                String prixfinal = request.getParameter("prixfinal");
                 int duree = Integer.parseInt(request.getParameter("duree"));
                 String idgagnant = request.getParameter("idgagnant");
 
