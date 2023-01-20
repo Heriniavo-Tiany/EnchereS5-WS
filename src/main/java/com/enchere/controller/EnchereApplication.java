@@ -149,4 +149,17 @@ public class EnchereApplication {
                 jdbc.batchUpdate(query);
         }
 
+        @GetMapping("/HistoEnchere")
+        public List<Enchere> getByIdUser(@RequestParam(value = "iduser") String iduser) {
+                String sql = String.format("SELECT * FROM enchere where idutilisateur= '%s'", iduser);
+                return jdbc.query(sql,
+                                (rs, rowNum) -> new Enchere(rs.getString("idenchere"),
+                                                rs.getString("idcategoriesenchere"),
+                                                rs.getString("idutilisateur"),
+                                                rs.getString("idproduit"), rs.getTimestamp("dateheure"),
+                                                rs.getDouble("prix_minimal"),
+                                                rs.getInt("duree"),
+                                                rs.getDouble("prixfinal"), rs.getString("idgagnant")));
+        }
+
 }
