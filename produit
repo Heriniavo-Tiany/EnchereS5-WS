@@ -1,0 +1,49 @@
+[{
+  "_id": {
+    "$oid": "63c40af0b27b0c6b8128b42b"
+  },
+  "idproduit": "1",
+  "nom": "tableau picasso",
+  "description": "autoprotrait a la meche",
+  "categorie": "decoration",
+  "image": [
+    "https://media.nga.gov/iiif/54ee6643-e0f9-4b92-a1d2-441e5108724d/full/!588,600/0/default.jpg",
+    "img11.jpg"
+  ]
+},{
+  "_id": {
+    "$oid": "63c40af0b27b0c6b8128b42c"
+  },
+  "idproduit": "2",
+  "nom": "villa Ankanisoa",
+  "description": "surface de 3000m2",
+  "categorie": "Habitat",
+  "image": [
+    "https://storage.googleapis.com/epc-photos/photo_b50843bc-611a-4844-83ca-951a9f830a2e.jpg",
+    "img22.jpg"
+  ]
+},{
+  "_id": {
+    "$oid": "63c40af0b27b0c6b8128b42d"
+  },
+  "idproduit": "3",
+  "nom": "mustang GT",
+  "description": "ford mustang GT cabriolet 1968",
+  "categorie": "vehicule",
+  "image": [
+    "https://i.pinimg.com/originals/59/42/44/5942442a08ac2a8060b53ced54b07dbe.jpg",
+    "img32.jpg"
+  ]
+},{
+  "_id": {
+    "$oid": "63c40af0b27b0c6b8128b42e"
+  },
+  "idproduit": "4",
+  "nom": "sculpture",
+  "description": "Etienne-Maurice Falconet:amoursse disputant un c�ur",
+  "categorie": "decoration",
+  "image": [
+    "https://collections.louvre.fr/media/cache/medium/0000000021/0000275404/0000755404_OG.JPG",
+    "img41.jpg"
+  ]
+}]
