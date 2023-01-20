@@ -11,8 +11,10 @@ public class RechercheControlleur {
     @Autowired
     JdbcTemplate jdbcTemplate;
 
+    @Autowired
+    ProduitRepository produitRepository;
 
-    @RequestMapping(value = "/rechercheavances", method = RequestMethod.GET, produces = "application/json")
+    @RequestMapping(value = "/rechercheavance", method = RequestMethod.GET, produces = "application/json")
     @CrossOrigin
     public Object rechecheavance(
             @RequestParam(value = "motcle") String motcle,
