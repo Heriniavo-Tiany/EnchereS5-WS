@@ -44,7 +44,7 @@ public class RenchereApplication {
                 val = new Error(007, "Votre mise est insuffisante");
             } else {
                 String query = String.format(
-                        "INSERT INTO rencherir VALUES ( concat('R', nextval('seq_rencherir')), '%s', '%s', '%s')",
+                        "INSERT INTO rencherir VALUES ( concat('R', nextval('seq_rencherir')), '%s', '%s', '%s',now())",
                         idenchere, iduser, prix);
                 jdbc.batchUpdate(query);
                 val = "Mise insérer";
