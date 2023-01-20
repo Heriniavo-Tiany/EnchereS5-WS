@@ -215,12 +215,12 @@ GROUP BY months.mois
 ORDER BY months.mois
 );
 ---anja
-CREATE or REPLACE view v_encherestatut AS
-SELECT idenchere,idcategoriesenchere,idutilisateur,idproduit,dateheure,prix_minimal,duree,COALESCE(prixFinal,'0') as prixfinal, COALESCE(idGagnant,'0') idgagnant,
-CASE WHEN prixFinal is null THEN 0
-    else 1
-    end as status
- FROM enchere ;
+-- CREATE or REPLACE view v_encherestatut AS
+-- SELECT idenchere,idcategoriesenchere,idutilisateur,idproduit,dateheure,prix_minimal,duree,COALESCE(prixFinal,'0') as prixfinal, COALESCE(idGagnant,'0') idgagnant,
+-- CASE WHEN prixFinal is null THEN 0
+--     else 1
+--     end as status
+--  FROM enchere ;
  CREATE SEQUENCE seq_rechargement;
 
 create sequence s_categorie;
