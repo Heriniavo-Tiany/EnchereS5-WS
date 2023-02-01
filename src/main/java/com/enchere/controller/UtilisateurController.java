@@ -62,9 +62,8 @@ public class UtilisateurController {
             @RequestParam(value = "email") String email,
             @RequestParam(value = "mdp") String mdp
     ) {
-        String query = String.format("SELECT * FROM admin WHERE email = '%s' and motdepasse = '%s'",
+        String query = String.format("SELECT * FROM utilisateur WHERE email = '%s' and motdepasse = sha224('%s')::varchar",
                 email, mdp);
-
         try {
             return jdbcTemplate.query(
                     query,
