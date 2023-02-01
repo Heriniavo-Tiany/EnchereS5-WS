@@ -55,8 +55,13 @@ public class UtilisateurController {
                 (rs, rowNum) -> new Rechargement(rs.getString("idrechargement"), rs.getString("idutilisateur"), rs.getTimestamp("datedemande"), rs.getDouble("compte")));
     }
 
-    @PostMapping("/utilisateurs")
-    public Object login(@RequestParam(value = "email") String email, @RequestParam(value = "mdp") String mdp) {
+    @RequestMapping(value = "/utilisateurs", method = RequestMethod.POST, produces = "application/json")
+    @ResponseBody
+    @CrossOrigin
+    public Object login(
+            @RequestParam(value = "email") String email,
+            @RequestParam(value = "mdp") String mdp
+    ) {
         String query = String.format("SELECT * FROM admin WHERE email = '%s' and motdepasse = '%s'",
                 email, mdp);
 
