@@ -1,6 +1,8 @@
 package com.enchere.controller;
 
+import com.enchere.model.Error;
 import com.enchere.model.Rechargement;
+import com.enchere.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.web.bind.annotation.*;
@@ -51,6 +53,22 @@ public class UtilisateurController {
         return jdbcTemplate.query(
                 query,
                 (rs, rowNum) -> new Rechargement(rs.getString("idrechargement"), rs.getString("idutilisateur"), rs.getTimestamp("datedemande"), rs.getDouble("compte")));
+    }
+
+    @PostMapping("/utilisateurs")
+    public Object login(@RequestParam(value = "email") String email, @RequestParam(value = "mdp") String mdp) {
+        String query = String.format("SELECT * FROM admin WHERE email = '%s' and motdepasse = '%s'",
+                email, mdp);
+
+        try {
+            return jdbcTemplate.query(
+                    query,
+                    (rs, rowNum) -> new User(rs.getString("idadmin"), rs.getString("email"),
+                            rs.getString("motdepasse")));
+        } catch (IndexOutOfBoundsException e) {
+            return new Error(404, "Email & Mot de passe non correspondant");
+        }
+
     }
 
 
