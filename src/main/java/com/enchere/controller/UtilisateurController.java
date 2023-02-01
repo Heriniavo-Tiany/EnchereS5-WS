@@ -67,7 +67,7 @@ public class UtilisateurController {
         try {
             return jdbcTemplate.query(
                     query,
-                    (rs, rowNum) -> new User(rs.getString("idadmin"), rs.getString("email"),
+                    (rs, rowNum) -> new User(rs.getString("idutilisateur"), rs.getString("email"),
                             rs.getString("motdepasse")));
         } catch (IndexOutOfBoundsException e) {
             return new Error(404, "Email & Mot de passe non correspondant");
