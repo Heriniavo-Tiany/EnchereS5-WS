@@ -55,10 +55,10 @@ public class UtilisateurController {
                 (rs, rowNum) -> new Rechargement(rs.getString("idrechargement"), rs.getString("idutilisateur"), rs.getTimestamp("datedemande"), rs.getDouble("compte")));
     }
 
-    @RequestMapping(value = "/utilisateurs", method = RequestMethod.POST, produces = "application/json")
+    @RequestMapping(value = "/loginUtilisateurs", method = RequestMethod.POST, produces = "application/json")
     @ResponseBody
     @CrossOrigin
-    public Object login(
+    public Object loginUser(
             @RequestParam(value = "email") String email,
             @RequestParam(value = "mdp") String mdp
     ) {
