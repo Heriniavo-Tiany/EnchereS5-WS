@@ -138,6 +138,27 @@ public class EnchereApplication {
                 }
                 return encheres;
         }
+        @GetMapping("/PasFini")
+        public List<Enchere> PasFini() {
+                String query = String.format("SELECT * FROM v_enchere WHERE status = '-1' or status = '0'");
+                List<Enchere> encheres = new ArrayList<>();
+                encheres= jdbc.query(
+                                query,
+                                (rs, rowNum) -> new Enchere(rs.getString("idenchere"),
+                                                rs.getString("idcategoriesenchere"),
+                                                rs.getString("idutilisateur"),
+                                                rs.getString("idproduit"), rs.getTimestamp("dateheure"),
+                                                rs.getDouble("prix_minimal"),
+                                                rs.getInt("duree"),
+                                                rs.getDouble("prixfinal"), rs.getString("idgagnant")));
+                                                for (Enchere e :
+                        encheres) {
+                        System.out.println(e.getIdproduit());
+                        System.out.println(produitRepository.findById(e.getIdproduit()));
+                        e.setProduit(produitRepository.findById(e.getIdproduit()));
+                }
+                return encheres;
+        }
 
         @RequestMapping(value = "/UpdateEnchere", method = RequestMethod.POST, produces = "application/json")
         @ResponseBody
