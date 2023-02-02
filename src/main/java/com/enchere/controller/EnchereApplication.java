@@ -139,6 +139,7 @@ public class EnchereApplication {
                 return encheres;
         }
         @GetMapping("/PasFini")
+        @CrossOrigin
         public List<Enchere> PasFini() {
                 String query = String.format("SELECT * FROM v_enchere WHERE status = '-1' or status = '0'");
                 List<Enchere> encheres = new ArrayList<>();
