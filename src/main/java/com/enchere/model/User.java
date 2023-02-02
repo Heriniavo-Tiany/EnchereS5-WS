@@ -34,4 +34,12 @@ public class User {
     public String getMdp() {
         return this.mdp;
     }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
 }
