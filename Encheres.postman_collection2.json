@@ -1,0 +1,802 @@
+{
+	"info": {
+		"_postman_id": "f6ccfb9f-62a7-4356-a2ad-d04d40516dea",
+		"name": "Encheres",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "login utilisateur",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "https://wsenchere.up.railway.app/User?email=rabe@gmail.com&mdp=motdepasse",
+					"protocol": "https",
+					"host": [
+						"wsenchere",
+						"up",
+						"railway",
+						"app"
+					],
+					"path": [
+						"User"
+					],
+					"query": [
+						{
+							"key": "email",
+							"value": "rabe@gmail.com"
+						},
+						{
+							"key": "mdp",
+							"value": "motdepasse"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "login admin",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "https://wsenchere.up.railway.app/Admin?email=koto@gmail.com&mdp=koto",
+					"protocol": "https",
+					"host": [
+						"wsenchere",
+						"up",
+						"railway",
+						"app"
+					],
+					"path": [
+						"Admin"
+					],
+					"query": [
+						{
+							"key": "email",
+							"value": "koto@gmail.com"
+						},
+						{
+							"key": "mdp",
+							"value": "koto"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getcategorieEnchere",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://wsenchere.up.railway.app/CategoriesEnchere",
+					"protocol": "https",
+					"host": [
+						"wsenchere",
+						"up",
+						"railway",
+						"app"
+					],
+					"path": [
+						"CategoriesEnchere"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "insertCategorieEnchere",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "https://wsenchere.up.railway.app/NewCategorieEnchere?nom=meuble",
+					"protocol": "https",
+					"host": [
+						"wsenchere",
+						"up",
+						"railway",
+						"app"
+					],
+					"path": [
+						"NewCategorieEnchere"
+					],
+					"query": [
+						{
+							"key": "nom",
+							"value": "meuble"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getCategorieEnchereById",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://wsenchere.up.railway.app/CategorieEnchere?id=CAT2",
+					"protocol": "https",
+					"host": [
+						"wsenchere",
+						"up",
+						"railway",
+						"app"
+					],
+					"path": [
+						"CategorieEnchere"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "CAT2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "updateCategorieEnchere",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "https://wsenchere.up.railway.app/updateCatEnchere?id=CAT1&nom=technologie",
+					"protocol": "https",
+					"host": [
+						"wsenchere",
+						"up",
+						"railway",
+						"app"
+					],
+					"path": [
+						"updateCatEnchere"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "CAT1"
+						},
+						{
+							"key": "nom",
+							"value": "technologie"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getAllEncheres",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://wsenchere.up.railway.app/Encheres",
+					"protocol": "https",
+					"host": [
+						"wsenchere",
+						"up",
+						"railway",
+						"app"
+					],
+					"path": [
+						"Encheres"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getEnchereById",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://wsenchere.up.railway.app/Enchere?idenchere=1",
+					"protocol": "https",
+					"host": [
+						"wsenchere",
+						"up",
+						"railway",
+						"app"
+					],
+					"path": [
+						"Enchere"
+					],
+					"query": [
+						{
+							"key": "idenchere",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getEnchereEnCours",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://wsenchere.up.railway.app/EnchereEnCours",
+					"protocol": "https",
+					"host": [
+						"wsenchere",
+						"up",
+						"railway",
+						"app"
+					],
+					"path": [
+						"EnchereEnCours"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getEnchereFini",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://wsenchere.up.railway.app/EnchereFini",
+					"protocol": "https",
+					"host": [
+						"wsenchere",
+						"up",
+						"railway",
+						"app"
+					],
+					"path": [
+						"EnchereFini"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getEncherePasCommence",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://wsenchere.up.railway.app/PasCommence",
+					"protocol": "https",
+					"host": [
+						"wsenchere",
+						"up",
+						"railway",
+						"app"
+					],
+					"path": [
+						"PasCommence"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getEncherePasFini",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://wsenchere.up.railway.app/PasFini",
+					"protocol": "https",
+					"host": [
+						"wsenchere",
+						"up",
+						"railway",
+						"app"
+					],
+					"path": [
+						"PasFini"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "updateEnchere",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "https://wsenchere.up.railway.app/UpdateEnchere?idenchere=ECR6&idutilisateur=1&idcategorie=1&idproduit=63c40af0b27b0c6b8128b42c&dateheure=2023-02-10 08:00:00&prix_minimal=20000.0&prixfinal=&duree=150&idgagnant=",
+					"protocol": "https",
+					"host": [
+						"wsenchere",
+						"up",
+						"railway",
+						"app"
+					],
+					"path": [
+						"UpdateEnchere"
+					],
+					"query": [
+						{
+							"key": "idenchere",
+							"value": "ECR6"
+						},
+						{
+							"key": "idutilisateur",
+							"value": "1"
+						},
+						{
+							"key": "idcategorie",
+							"value": "1"
+						},
+						{
+							"key": "idproduit",
+							"value": "63c40af0b27b0c6b8128b42c"
+						},
+						{
+							"key": "dateheure",
+							"value": "2023-02-10 08:00:00"
+						},
+						{
+							"key": "prix_minimal",
+							"value": "20000.0"
+						},
+						{
+							"key": "prixfinal",
+							"value": ""
+						},
+						{
+							"key": "duree",
+							"value": "150"
+						},
+						{
+							"key": "idgagnant",
+							"value": ""
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "NewEnchere",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "https://wsenchere.up.railway.app/NewEnchere?idutilisateur=4&idcategorie=2&idproduit=63c40af0b27b0c6b8128b42c&dateheure=2023-02-07 08:00:00&prix_minimal=201000&duree=120",
+					"protocol": "https",
+					"host": [
+						"wsenchere",
+						"up",
+						"railway",
+						"app"
+					],
+					"path": [
+						"NewEnchere"
+					],
+					"query": [
+						{
+							"key": "idutilisateur",
+							"value": "4"
+						},
+						{
+							"key": "idcategorie",
+							"value": "2"
+						},
+						{
+							"key": "idproduit",
+							"value": "63c40af0b27b0c6b8128b42c"
+						},
+						{
+							"key": "dateheure",
+							"value": "2023-02-07 08:00:00"
+						},
+						{
+							"key": "prix_minimal",
+							"value": "201000"
+						},
+						{
+							"key": "prixfinal",
+							"value": null,
+							"disabled": true
+						},
+						{
+							"key": "duree",
+							"value": "120"
+						},
+						{
+							"key": "idgagnant",
+							"value": null,
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "HistoriaqueByUtilisateur",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://wsenchere.up.railway.app/HistoEnchere?iduser=4",
+					"protocol": "https",
+					"host": [
+						"wsenchere",
+						"up",
+						"railway",
+						"app"
+					],
+					"path": [
+						"HistoEnchere"
+					],
+					"query": [
+						{
+							"key": "iduser",
+							"value": "4"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getStats/categoriesEnchere",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://wsenchere.up.railway.app/stats/categories",
+					"protocol": "https",
+					"host": [
+						"wsenchere",
+						"up",
+						"railway",
+						"app"
+					],
+					"path": [
+						"stats",
+						"categories"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getStats/moisEnchere",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://wsenchere.up.railway.app/stats/mois",
+					"protocol": "https",
+					"host": [
+						"wsenchere",
+						"up",
+						"railway",
+						"app"
+					],
+					"path": [
+						"stats",
+						"mois"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getAllProduits",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://wsenchere.up.railway.app/produits",
+					"protocol": "https",
+					"host": [
+						"wsenchere",
+						"up",
+						"railway",
+						"app"
+					],
+					"path": [
+						"produits"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getProduitById",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://wsenchere.up.railway.app/produits?id=63c40af0b27b0c6b8128b42",
+					"protocol": "https",
+					"host": [
+						"wsenchere",
+						"up",
+						"railway",
+						"app"
+					],
+					"path": [
+						"produits"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "63c40af0b27b0c6b8128b42"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "insert produit",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "https://wsenchere.up.railway.app/produits?idproduit=prod01&nom=Table saint denis&categorie=table antique&description=resistante et toujours aussi brillant",
+					"protocol": "https",
+					"host": [
+						"wsenchere",
+						"up",
+						"railway",
+						"app"
+					],
+					"path": [
+						"produits"
+					],
+					"query": [
+						{
+							"key": "idproduit",
+							"value": "prod01"
+						},
+						{
+							"key": "nom",
+							"value": "Table saint denis"
+						},
+						{
+							"key": "categorie",
+							"value": "table antique"
+						},
+						{
+							"key": "description",
+							"value": "resistante et toujours aussi brillant"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "rechercheAvance",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://wsenchere.up.railway.app/rechercheavance?motcle=vil&date&categorie&status&prixminimal",
+					"protocol": "https",
+					"host": [
+						"wsenchere",
+						"up",
+						"railway",
+						"app"
+					],
+					"path": [
+						"rechercheavance"
+					],
+					"query": [
+						{
+							"key": "motcle",
+							"value": "vil"
+						},
+						{
+							"key": "date",
+							"value": null
+						},
+						{
+							"key": "categorie",
+							"value": null
+						},
+						{
+							"key": "status",
+							"value": null
+						},
+						{
+							"key": "prixminimal",
+							"value": null
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "rencherir",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "https://wsenchere.up.railway.app/NewRenchere?idenchere=ECR1&iduser=3&prix=306000",
+					"protocol": "https",
+					"host": [
+						"wsenchere",
+						"up",
+						"railway",
+						"app"
+					],
+					"path": [
+						"NewRenchere"
+					],
+					"query": [
+						{
+							"key": "idenchere",
+							"value": "ECR1"
+						},
+						{
+							"key": "iduser",
+							"value": "3"
+						},
+						{
+							"key": "prix",
+							"value": "306000"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetRenchereByEncher",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://wsenchere.up.railway.app/Rencheres?idenchere=ECR1",
+					"protocol": "https",
+					"host": [
+						"wsenchere",
+						"up",
+						"railway",
+						"app"
+					],
+					"path": [
+						"Rencheres"
+					],
+					"query": [
+						{
+							"key": "idenchere",
+							"value": "ECR1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DeleteRenchire",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "https://wsenchere.up.railway.app/deleteRenchere?idenchere=ECR1&idrencherir=R18",
+					"protocol": "https",
+					"host": [
+						"wsenchere",
+						"up",
+						"railway",
+						"app"
+					],
+					"path": [
+						"deleteRenchere"
+					],
+					"query": [
+						{
+							"key": "idenchere",
+							"value": "ECR1"
+						},
+						{
+							"key": "idrencherir",
+							"value": "R18"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getDemandeRechargement",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://wsenchere.up.railway.app/demandeRechargements",
+					"protocol": "https",
+					"host": [
+						"wsenchere",
+						"up",
+						"railway",
+						"app"
+					],
+					"path": [
+						"demandeRechargements"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "insertDemandeRechargment",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "https://wsenchere.up.railway.app/insertrechargements?idutilisateur=1&compte=1000",
+					"protocol": "https",
+					"host": [
+						"wsenchere",
+						"up",
+						"railway",
+						"app"
+					],
+					"path": [
+						"insertrechargements"
+					],
+					"query": [
+						{
+							"key": "idutilisateur",
+							"value": "1"
+						},
+						{
+							"key": "compte",
+							"value": "1000"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "validationRechargement",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "https://wsenchere.up.railway.app/rechargements?idRechargement=RECH2&admin=1",
+					"protocol": "https",
+					"host": [
+						"wsenchere",
+						"up",
+						"railway",
+						"app"
+					],
+					"path": [
+						"rechargements"
+					],
+					"query": [
+						{
+							"key": "idRechargement",
+							"value": "RECH2"
+						},
+						{
+							"key": "admin",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
