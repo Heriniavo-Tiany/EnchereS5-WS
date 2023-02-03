@@ -14,6 +14,7 @@ public class UserApplication {
     JdbcTemplate jdbc;
 
     @PostMapping("/User")
+    @CrossOrigin
     public Object getUser(@RequestParam(value = "email") String email, @RequestParam(value = "mdp") String mdp) {
         // String query = String.format("SELECT * FROM utilisateur WHERE email = '%s'
         // and motdepasse = md5('%s')::varchar",
