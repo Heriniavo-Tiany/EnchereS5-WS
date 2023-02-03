@@ -30,6 +30,7 @@ public class RenchereApplication {
 
     @RequestMapping(value = "/NewRenchere", method = RequestMethod.POST, produces = "application/json")
     @ResponseBody
+    @CrossOrigin
     public Object insert(
             @RequestParam(value = "idenchere") String idenchere,
             @RequestParam(value = "iduser") String iduser,
