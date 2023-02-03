@@ -45,6 +45,7 @@ public class EnchereApplication {
         }
 
         @GetMapping("/Enchere")
+        @CrossOrigin
         public Enchere get(@RequestParam(value = "idenchere") String idenchere) {
                 String query = String.format("SELECT * FROM enchere WHERE idenchere = '%s' ",
                                 idenchere);
@@ -73,6 +74,7 @@ public class EnchereApplication {
         }
 
         @GetMapping("/EnchereEnCours")
+        @CrossOrigin
         public List<Enchere> getEnCours() {
                 String query = String.format("SELECT * FROM v_enchere WHERE status = '0' ");
                 List<Enchere> encheres = new ArrayList<>();
@@ -96,6 +98,7 @@ public class EnchereApplication {
         }
 
         @GetMapping("/EnchereFini")
+        @CrossOrigin
         public List<Enchere> getFini() {
                 List<Enchere> encheres = new ArrayList<>();
                 String query = String.format("SELECT * FROM v_enchere WHERE status = '1' ");
@@ -118,6 +121,7 @@ public class EnchereApplication {
         }
 
         @GetMapping("/PasCommence")
+        @CrossOrigin
         public List<Enchere> PasCommence() {
                 String query = String.format("SELECT * FROM v_enchere WHERE status = '-1'");
                 List<Enchere> encheres = new ArrayList<>();
@@ -163,6 +167,7 @@ public class EnchereApplication {
 
         @RequestMapping(value = "/UpdateEnchere", method = RequestMethod.POST, produces = "application/json")
         @ResponseBody
+        @CrossOrigin
         public void update(HttpServletRequest request) {
                 String idenchere = request.getParameter("idenchere");
                 String iduser = request.getParameter("idutilisateur");
@@ -190,6 +195,7 @@ public class EnchereApplication {
 
         @RequestMapping(value = "/NewEnchere", method = RequestMethod.POST, produces = "application/json")
         @ResponseBody
+        @CrossOrigin
         public void insert(HttpServletRequest request) {
                 String iduser = request.getParameter("idutilisateur");
                 String idcategorie = request.getParameter("idcategorie");
@@ -207,6 +213,7 @@ public class EnchereApplication {
         }
 
         @GetMapping("/HistoEnchere")
+        @CrossOrigin
         public List<Enchere> getByIdUser(@RequestParam(value = "iduser") String iduser) {
                 String sql = String.format("SELECT * FROM enchere where idutilisateur= '%s'", iduser);
                 return jdbc.query(sql,
