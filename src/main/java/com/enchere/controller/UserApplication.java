@@ -32,6 +32,7 @@ public class UserApplication {
     }
 
     @PostMapping("/Admin")
+    @CrossOrigin
     public Object getAdmin(@RequestParam(value = "email") String email, @RequestParam(value = "mdp") String mdp) {
         // String query = String.format("SELECT * FROM admin WHERE email = '%s' and
         // motdepasse = md5('%s')::varchar",
